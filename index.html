@@ -4,5 +4,39 @@
     </head>
     <body>
         Josh Condie
+        <br>
+        <br>
+        Instance ID: i-80a05f47
+        <br>
+        <br>
+        AMI ID: ami-8bdcc6ea
+        <br>
+        <br>
+        User Data:
+        <br>
+        <br>
+        #!/bin/bash
+        <br>
+        yum update -y
+        <br>
+        yum install -y httpd24 php56 mysql55-server php56-mysqlnd git
+        <br>
+        service httpd start
+        <br>
+        chkconfig httpd on
+        <br>
+        groupadd www
+        <br>
+        usermod -a -G www ec2-user
+        <br>
+        chown -R root:www /var/www
+        <br>
+        chmod 2775 /var/www
+        <br>
+        find /var/www -type d -exec chmod 2775 {} +
+        <br>
+        find /var/www -type f -exec chmod 0664 {} +
+        <br>
+        git clone https://github.com/joshbcondie/cs-462.git /var/www/html
     </body>
 </html>
